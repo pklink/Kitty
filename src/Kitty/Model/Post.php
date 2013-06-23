@@ -29,6 +29,13 @@ class Post {
     protected $content;
 
     /**
+     * @var string
+     * @Column(type="string", name="post_type")
+     */
+    protected $type;
+
+
+    /**
      * @return mixed
      */
     public function getContent()
@@ -66,6 +73,38 @@ class Post {
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getExcerpt()
+    {
+        $content = $this->getContent();
+        $end     = strpos($content, '<!--more-->');
+
+        if ($end == 0) {
+            $end = null;
+        }
+
+        return substr($content, 0, $end);
     }
 
 }

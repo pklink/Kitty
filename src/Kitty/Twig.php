@@ -25,7 +25,7 @@ class Twig {
 
         $loader = new \Twig_Loader_Filesystem($basepath);
         self::$instance = new \Twig_Environment($loader, array(
-            'cache' => $basepath . '/cache',
+            //'cache' => $basepath . '/cache',
         ));
     }
 
