@@ -34,17 +34,42 @@ class Post {
      */
     protected $type;
 
+    /**
+     * @var string
+     * @Column(type="string", name="post_status")
+     */
+    protected $status;
+
 
     /**
-     * @return mixed
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+
+    /**
+     * @return string
      */
     public function getContent()
     {
         return $this->content;
     }
 
+
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -52,7 +77,7 @@ class Post {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -60,7 +85,7 @@ class Post {
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      */
     public function setTitle($title)
     {
@@ -68,7 +93,7 @@ class Post {
     }
 
     /**
-     * @param mixed $content
+     * @param string $content
      */
     public function setContent($content)
     {
