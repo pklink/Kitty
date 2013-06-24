@@ -12,7 +12,8 @@ use Kitty\Twig;
  *
  * @package Kitty\Controller
  */
-class Post extends Controller {
+class Post extends Controller
+{
 
     /**
      * @return void

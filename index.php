@@ -10,9 +10,17 @@ $app = new \Kitty\App([
 ]);
 
 
+$app->add(new \Kitty\Middleware\Authentication([
+    'loginUrl'  => $app->getBaseUrl() . '/login',
+    'secure'    => $app->getBaseUrl() . '/admin'
+]));
+
+
 $app->addRoutes(array(
     '/'            => 'Post:index',
     '/article/:id' => 'Post:view',
+    '/login'       => 'Site:login',
+    '/logout'      => 'Site:logout'
 ));
 
 

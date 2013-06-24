@@ -11,14 +11,9 @@ use SlimController\SlimController;
  * Class Controller
  *
  * @package Kitty
+ * @property App $app
  */
 abstract class Controller extends SlimController {
-
-    /**
-     * @var App
-     */
-    //protected $app;
-
 
     /**
      * @var EntityManager
@@ -34,5 +29,23 @@ abstract class Controller extends SlimController {
         $this->enitityManager = EntityManager::instance();
         parent::__construct($app);
     }
+
+
+    /**
+     * @param string $template
+     * @param array $args
+     */
+    protected function render($template, $args = [])
+    {
+        /* @var \Kitty\App $app */
+        $app = $this->app;
+
+        $args['app'] = [
+            'baseUrl' => $app->getBaseUrl()
+        ];
+
+        parent::render($template, $args);
+    }
+
 
 }

@@ -8,25 +8,16 @@ class View extends \Slim\View
 {
 
     /**
-     * @var array
-     */
-    protected $options = [
-        'baseUrl' => ''
-    ];
-
-    /**
      * @var \Twig_Environment
      */
     protected $twig;
 
 
     /**
-     * @param array $options
+     * @return View
      */
-    public function __construct($options = [])
+    public function __construct()
     {
-        $this->options = array_merge($this->options, $options);
-
         // init twig
         $basepath = realpath(__DIR__ . '/../../templates');
 
@@ -48,7 +39,6 @@ class View extends \Slim\View
      */
     public function render($template)
     {
-        $this->data['app'] = $this->options;
         return $this->twig->render($template . '.twig', $this->data);
     }
 
