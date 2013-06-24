@@ -170,7 +170,14 @@ code {
     font-size: .9em;
 }
 
+article header h2 {
+    margin-bottom: 0px;
+}
 
+article header p {
+    margin-top: 5px;
+    font-size: 0.8em;
+}
 
 
 

@@ -40,6 +40,12 @@ class Post {
      */
     protected $status;
 
+    /**
+     * @var string
+     * @Column(type="string", name="post_date")
+     */
+    protected $date;
+
 
     /**
      * @param string $status
@@ -76,6 +82,7 @@ class Post {
         return $this->id;
     }
 
+
     /**
      * @return string
      */
@@ -83,6 +90,7 @@ class Post {
     {
         return $this->title;
     }
+
 
     /**
      * @param string $title
@@ -92,6 +100,7 @@ class Post {
         $this->title = $title;
     }
 
+
     /**
      * @param string $content
      */
@@ -99,6 +108,7 @@ class Post {
     {
         $this->content = $content;
     }
+
 
     /**
      * @param string $type
@@ -108,12 +118,31 @@ class Post {
         $this->type = $type;
     }
 
+
     /**
      * @return string
      */
     public function getType()
     {
         return $this->type;
+    }
+
+
+    /**
+     * @param string $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
 
