@@ -12,7 +12,10 @@ $app = new \Kitty\App([
 
 $app->add(new \Kitty\Middleware\Authentication([
     'loginUrl'  => $app->getBaseUrl() . '/login',
-    'secure'    => $app->getBaseUrl() . '/admin'
+    'secured'   => [
+        $app->getBaseUrl() . '/admin',
+        $app->getBaseUrl() . '/article/create',
+    ]
 ]));
 
 

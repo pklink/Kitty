@@ -22,7 +22,9 @@ class Authentication extends Middleware
     /**
      * @var string
      */
-    public $secure   = '/admin';
+    public $secured = [
+        '/admin'
+    ];
 
 
     /**
@@ -35,9 +37,9 @@ class Authentication extends Middleware
             $this->loginUrl = $args['loginUrl'];
         }
 
-        if (isset($args['secure']))
+        if (isset($args['secured']))
         {
-            $this->secure = $args['secure'];
+            $this->secured = $args['secured'];
         }
     }
 
@@ -57,8 +59,14 @@ class Authentication extends Middleware
         $path = $app->request()->getPath();
 
         // check if requested url is in secure-path
-        if (substr($path, 0, strlen($this->secure)) == $this->secure && $app->getIdentity()->isGuest()) {
-            $app->redirect($this->loginUrl, 401);
+        if ($app->getIdentity()->isGuest())
+        {
+            foreach ($this->secured as $secured)
+            {
+                if (substr($path, 0, strlen($secured)) == $secured) {
+                    $app->redirect($this->loginUrl, 401);
+                }
+            }
         }
 
         $this->next->call();
