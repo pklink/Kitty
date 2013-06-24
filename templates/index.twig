@@ -57,7 +57,7 @@
 
 <body>
 
-<header class="white band padded">
+<header class="white band padded border-bottom double gap-bottom">
     <div class="container">
         <h1>GroundworkCSS</h1>
 
@@ -70,9 +70,14 @@
     </div>
 </header>
 
-<div class="container">
+<div class="container pad-bottom double">
     <div class="row">
-        <aside class="one fourth right-three padded border-left">
+        <section class="eight twelfths">
+            {% block content %}
+            {% endblock %}
+        </section>
+
+        <aside class="three twelfths skip-one">
             <h2>Section Heading 2</h2>
             <ul class="list">
                 <li>Unordered list item #1</li>
@@ -86,14 +91,9 @@
                 <li>Ordered list item #3</li>
             </ol>
         </aside>
-
-        <section class="three fourths left-one padded">
-            {% block content %}
-            {% endblock %}
-        </section>
     </div>
 </div>
-<footer class="footer align-right">
+<footer class="footer align-center one border-top padded triple">
     <p>&copy 2013 Gary Hepting. Free to use, but <a href="mailto:groundwork@sidereel.com">give me a shout </a>if you find GroundworkCSS extremely useful!</p>
 </footer>
 

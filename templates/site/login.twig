@@ -2,17 +2,27 @@
 
 {% block content %}
 
-    <form method="post">
-        <div>
-            <label for="username">Benutzername</label>
-            <input type="text" name="username" id="username" />
+    <h2>Login</h2>
+
+    <form method="post" class="two thirds">
+        <div class="row">
+            <div class="one padded">
+                <label for="username">Benutzername</label>
+                <input type="text" name="username" id="username" required="required" />
+            </div>
         </div>
-        <div>
-            <label for="password">Passwort</label>
-            <input type="password" name="password" id="password" />
+        <div class="row">
+            <div class="one padded">
+                <label for="password">Passwort</label>
+                <input type="password" name="password" id="password" required="required" />
+            </div>
         </div>
-        <div>
-            <input type="submit" />
+        <div class="row">
+            <div class="one padded">
+                <button type="submit">
+                    Login
+                </button>
+            </div>
         </div>
     </form>
 
