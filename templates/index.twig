@@ -60,11 +60,16 @@
 <header class="white band padded border-bottom double gap-bottom">
     <div class="container">
         <h1>GroundworkCSS</h1>
-
         <nav class="inline nav">
             <ul class="row">
                 <li><a href="{{ app.baseUrl }}"><i class="icon-home"></i></a></li>
-                <li><a href="{{ app.baseUrl }}/login">Login</a></li>
+                {% if identity.isGuest %}
+                    <li><a href="{{ app.baseUrl }}/login">Login</a></li>
+                {% else %}
+                    <li><a href="{{ app.baseUrl }}/admin">Admin</a></li>
+                    <li><a href="{{ app.baseUrl }}/logout">Logout</a></li>
+                {% endif %}
+
             </ul>
         </nav>
     </div>

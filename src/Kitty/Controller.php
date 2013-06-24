@@ -43,6 +43,7 @@ abstract class Controller extends SlimController {
         $args['app'] = [
             'baseUrl' => $app->getBaseUrl()
         ];
+        $args['identity'] = $app->getIdentity();
 
         parent::render($template, $args);
     }
