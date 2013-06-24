@@ -8,6 +8,7 @@
     "require": {
         "slim/slim": "2.*",
         "doctrine/orm": "2.*",
+        "slimcontroller/slimcontroller": "dev-master",
         "twig/twig": "1.*"
     }
 }

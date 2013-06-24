@@ -3,9 +3,13 @@
 
 namespace Kitty;
 
+use SlimController\Slim;
 
-use Slim\Slim;
-
+/**
+ * Class App
+ *
+ * @package Kitty
+ */
 class App extends Slim {
 
     /**

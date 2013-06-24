@@ -4,12 +4,20 @@
 namespace Kitty;
 
 
-abstract class Controller {
+use Slim\Slim;
+use SlimController\SlimController;
+
+/**
+ * Class Controller
+ *
+ * @package Kitty
+ */
+abstract class Controller extends SlimController {
 
     /**
      * @var App
      */
-    protected $app;
+    //protected $app;
 
 
     /**
@@ -19,11 +27,12 @@ abstract class Controller {
 
 
     /**
-     * @param App $app
+     * @param Slim $app
      */
-    public function __construct(App $app) {
-        $this->app            = $app;
+    public function __construct(Slim &$app)
+    {
         $this->enitityManager = EntityManager::instance();
+        parent::__construct($app);
     }
 
 }

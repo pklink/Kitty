@@ -17,14 +17,14 @@ class Post extends Controller {
     /**
      * @return void
      */
-    public function index() {
+    public function indexAction() {
         // get posts
         $posts = $this->enitityManager->createQuery('SELECT p FROM Kitty\Model\Post p WHERE p.type = ?1 AND p.status = ?2 ORDER BY p.id DESC');
         $posts->setParameter(1, 'post');
         $posts->setParameter(2, 'publish');
 
         // render index
-        $this->app->render('post/index', [
+        $this->render('post/index', [
             'posts' => $posts->getResult()
         ]);
     }
@@ -33,11 +33,11 @@ class Post extends Controller {
     /**
      * @param int $id
      */
-    public function view($id) {
+    public function viewAction($id) {
         // get post
         $post = $this->enitityManager->find('Kitty\Model\Post', $id);
 
-        $this->app->render('post/view', [
+        $this->render('post/view', [
             'post' => $post
         ]);
     }
