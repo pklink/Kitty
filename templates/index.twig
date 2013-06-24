@@ -67,6 +67,12 @@
                     <li><a href="{{ app.baseUrl }}/login">Login</a></li>
                 {% else %}
                     <li><a href="{{ app.baseUrl }}/admin">Admin</a></li>
+                    <li class="menu">
+                        <a href="{{ app.baseUrl }}/article">Artikel</a>
+                        <ul>
+                            <li><a href="{{ app.baseUrl }}/article/create">Erstellen</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{ app.baseUrl }}/logout">Logout</a></li>
                 {% endif %}
 

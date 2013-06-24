@@ -17,8 +17,9 @@ $app->add(new \Kitty\Middleware\Authentication([
 
 
 $app->addRoutes(array(
-    '/'                => 'Post:index',
-    '/article/:id'     => 'Post:view',
+    '/'                => 'Article:index',
+    '/article/create'  => 'Article:create',
+    '/article/:id'     => 'Article:view',
     '/login'           => 'Site:login',
     '/logout'          => 'Site:logout',
     '/admin'           => 'Admin:index',
