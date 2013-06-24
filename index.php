@@ -17,10 +17,12 @@ $app->add(new \Kitty\Middleware\Authentication([
 
 
 $app->addRoutes(array(
-    '/'            => 'Post:index',
-    '/article/:id' => 'Post:view',
-    '/login'       => 'Site:login',
-    '/logout'      => 'Site:logout'
+    '/'                => 'Post:index',
+    '/article/:id'     => 'Post:view',
+    '/login'           => 'Site:login',
+    '/logout'          => 'Site:logout',
+    '/admin'           => 'Admin:index',
+    '/admin/dashboard' => 'Admin:dashboard',
 ));
 
 
