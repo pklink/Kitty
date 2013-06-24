@@ -3,18 +3,19 @@
 require_once "vendor/autoload.php";
 
 
-$app = new \Slim\Slim([
-    'debug' => true
+$app = new \Kitty\App([
+    'debug'   => true,
+    'baseUrl' => '/mdwp'
 ]);
 
 
-$app->get('/hello/:name', function ($name) {
-    echo "Hello, $name";
+$app->get('/article/:id', function ($id) use ($app) {
+    (new \Kitty\Controller\Post($app))->view($id);
 });
 
 // default router
-$app->get('/', function() {
-    (new \Kitty\Controller\Post())->index();
+$app->get('/', function() use ($app) {
+    (new \Kitty\Controller\Post($app))->index();
 });
 
 

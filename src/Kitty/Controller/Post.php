@@ -3,6 +3,7 @@
 
 namespace Kitty\Controller;
 
+use Kitty\Controller;
 use Kitty\EntityManager;
 use Kitty\Twig;
 
@@ -11,20 +12,7 @@ use Kitty\Twig;
  *
  * @package Kitty\Controller
  */
-class Post {
-
-    /**
-     * @var EntityManager
-     */
-    protected $enitityManager;
-
-    /**
-     * @return Post
-     */
-    public function __construct() {
-        $this->enitityManager = EntityManager::instance();
-    }
-
+class Post extends Controller {
 
     /**
      * @return void
@@ -36,8 +24,21 @@ class Post {
         $posts->setParameter(2, 'publish');
 
         // render index
-        echo Twig::instance()->render('index.twig', [
-            'posts' => $posts->getResult(),
+        $this->app->render('post/index', [
+            'posts' => $posts->getResult()
+        ]);
+    }
+
+
+    /**
+     * @param int $id
+     */
+    public function view($id) {
+        // get post
+        $post = $this->enitityManager->find('Kitty\Model\Post', $id);
+
+        $this->app->render('post/view', [
+            'post' => $post
         ]);
     }
 

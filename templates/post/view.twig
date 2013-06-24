@@ -1,0 +1,25 @@
+{% extends "index.twig" %}
+
+{% block content %}
+
+    <article>
+        <section>
+            <header>
+                <h2>{{ post.title }}</h2>
+                <p>veröffentlicht am {{ post.date }}</p>
+            </header>
+        </section>
+
+        <section>
+            <p>{{ post.content|raw }}</p>
+        </section>
+
+        <section>
+            <footer>
+                <a href="#">« Vorheriger Artikel</a>
+                <a href="#">Nächster Artikel »</a>
+            </footer>
+        </section>
+    </article>
+
+{% endblock %}
