@@ -155,7 +155,7 @@ class Post {
         $end     = strpos($content, '<!--more-->');
 
         if ($end == 0) {
-            $end = null;
+            $end = strlen($content);
         }
 
         return substr($content, 0, $end);
