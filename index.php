@@ -19,4 +19,9 @@ $app->get('/', function() use ($app) {
 });
 
 
+// 404
+$app->notFound(function () use ($app) {
+    $app->render('404');
+});
+
 $app->run();
