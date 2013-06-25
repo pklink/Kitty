@@ -27,7 +27,12 @@ class View extends \Slim\View
             'debug' => true
         ));
 
+        // add debug-extension
         $this->twig->addExtension(new \Twig_Extension_Debug());
+
+        // add markdown-filter
+        $filter = new \Twig_SimpleFilter('markdown', ['\Michelf\Markdown', 'defaultTransform']);
+        $this->twig->addFilter($filter);
 
         parent::__construct();
     }
