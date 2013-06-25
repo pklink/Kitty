@@ -24,7 +24,7 @@
                     <td>{{ article.title }}</td>
                     <td class="options align-right">
                         <a href="#" class="tooltip" title="Bearbeiten"><i class="icon-pencil"></i></a>
-                        <a href="#" class="tooltip" title="Löschen"><i class="icon-remove"></i></a>
+                        <a href="{{ app.baseUrl }}/article/delete/{{ article.id }}" class="tooltip" title="Löschen"><i class="icon-remove"></i></a>
                     </td>
                 </tr>
             {% endfor %}

@@ -16,19 +16,21 @@ $app->add(new \Kitty\Middleware\Authentication([
         $app->getBaseUrl() . '/admin',
         $app->getBaseUrl() . '/article/admin',
         $app->getBaseUrl() . '/article/create',
+        $app->getBaseUrl() . '/article/delete',
     ]
 ]));
 
 
 $app->addRoutes(array(
-    '/'                => 'Article:index',
-    '/article/create'  => 'Article:create',
-    '/article/admin'   => 'Article:admin',
-    '/article/:id'     => 'Article:view',
-    '/login'           => 'Site:login',
-    '/logout'          => 'Site:logout',
-    '/admin'           => 'Admin:index',
-    '/admin/dashboard' => 'Admin:dashboard',
+    '/'                     => 'Article:index',
+    '/article/create'       => 'Article:create',
+    '/article/admin'        => 'Article:admin',
+    '/article/delete/:id'   => 'Article:delete',
+    '/article/:id'          => 'Article:view',
+    '/login'                => 'Site:login',
+    '/logout'               => 'Site:logout',
+    '/admin'                => 'Admin:index',
+    '/admin/dashboard'      => 'Admin:dashboard',
 ));
 
 

@@ -68,6 +68,29 @@ class Article extends Controller
 
 
     /**
+     * @param int $id
+     */
+    public function deleteAction($id)
+    {
+        // get post
+        $post = $this->entityManager->find('Kitty\Model\Article', $id);
+
+        if ($post == null)
+        {
+            $this->app->notFound();
+        }
+
+        $this->entityManager->remove($post);
+        $this->entityManager->flush();
+
+        /* @var App $app; */
+        $app = $this->app;
+        $app->flash('success', 'Artikel wurde gelöscht');
+        $app->redirect($app->getBaseUrl() . '/article/admin');
+    }
+
+
+    /**
      * @return void
      */
     public function indexAction() {
