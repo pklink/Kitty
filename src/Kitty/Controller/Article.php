@@ -46,7 +46,7 @@ class Article extends Controller
             $model->setTitle($request->post('title'));
             $model->setContent($request->post('content'));
             $model->setDate(new \DateTime('now'));
-            $model->setStatus(\Kitty\Model\Article::STATUS_PUBLISHED);
+            $model->setStatus($request->post('status'));
             $model->setType($request->post('type'));
 
             $this->entityManager->persist($model);
@@ -96,6 +96,7 @@ class Article extends Controller
             $model->setTitle($request->post('title'));
             $model->setContent($request->post('content'));
             $model->setType($request->post('type'));
+            $model->setStatus($request->post('status'));
 
             // save model
             $this->entityManager->persist($model);

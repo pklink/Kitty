@@ -13,7 +13,7 @@
     <table>
         <thead>
             <tr>
-                <th style="width: 5%">ID</th>
+                <th style="width:25px"></th>
                 <th>Titel</th>
                 <th></th>
             </tr>
@@ -21,7 +21,16 @@
         <tbody>
             {% for article in articles %}
                 <tr>
-                    <td>{{ article.id }}</td>
+                    <td>
+                        {% if article.status == "draft" %}
+                            {% set statusclass = "turquoise" %}
+                            {% set tooltip = "Entwurf" %}
+                        {% else %}
+                            {% set statusclass = "green" %}
+                            {% set tooltip = "Veröffentlicht" %}
+                        {% endif %}
+                        <span class="small {{ statusclass }} button tooltip" title="{{ tooltip }}"></span>
+                    </td>
                     <td><a href="{{ app.baseUrl }}/article/{{ article.id }}"  class="tooltip" title="Artikel anzeigen">{{ article.title }}</td>
                     <td class="options align-right">
                         <a href="{{ app.baseUrl }}/article/edit/{{ article.id }}"  class="tooltip" title="Bearbeiten"><i class="icon-pencil"></i></a>

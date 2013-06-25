@@ -16,6 +16,8 @@ class Article {
 
     const STATUS_PUBLISHED = 'published';
 
+    const STATUS_DRAFT = 'draft';
+
 
     /**
      * @var integer

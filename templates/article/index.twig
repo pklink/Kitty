@@ -3,7 +3,7 @@
 {% block content %}
 
     {% for post in posts %}
-        <article class="gap-bottom triple pad-bottom">
+        <article class="gap-bottom double pad-bottom">
             <section>
                 <header>
                     <h2><a href="{{ app.baseUrl }}/article/{{ post.id }}">{{ post.title }}</a></h2>
@@ -11,7 +11,6 @@
             </section>
 
             <section>
-
                 <div>{{ post.excerpt|markdown|raw }}</div>
             </section>
 
@@ -23,6 +22,7 @@
                     </a>
                 </footer>
             </section>
+
         </article>
     {% endfor %}
 
