@@ -44,7 +44,7 @@ class Settings extends Controller
             $this->entityManager->persist($name);
             $this->entityManager->flush();
 
-            $app->flash('success', 'Einstellungen wurden gespeichert.');
+            $app->flash('success', 'Einstellungen gespeichert.');
             $app->redirect($app->getBaseUrl() . '/settings');
         }
 

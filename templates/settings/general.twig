@@ -4,6 +4,10 @@
 
     <h2>Allgemeine Einstellungen</h2>
 
+    {% if flash.success %}
+        <p class="success message">{{ flash.success }}</p>
+    {% endif %}
+
     <form method="post">
 
         <div class="one pad-bottom">
