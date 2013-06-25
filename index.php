@@ -20,8 +20,6 @@ $app->addRoutes(array(
     '/settings'             => 'Settings:general',
     '/login'                => 'Site:login',
     '/logout'               => 'Site:logout',
-    '/admin'                => 'Admin:index',
-    '/admin/dashboard'      => 'Admin:dashboard',
 ));
 
 

@@ -33,7 +33,7 @@ class Site extends Controller
 
             if ($user instanceof User && $user->getPassword()->match($password)) {
                 $app->getIdentity()->login($user->getName());
-                $app->redirect($app->getBaseUrl() . '/admin');
+                $app->redirect($app->getBaseUrl());
             }
         }
 
