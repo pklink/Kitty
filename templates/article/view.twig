@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="one half">
                         {% if (model.previous) %}
-                            <a href="{{ app.baseUrl }}/article/{{ model.previous.id }}" class="small button">
+                            <a href="{{ app.baseUrl }}/article/{{ model.previous.id }}" class="button">
                                 <i class="icon-double-angle-left"></i>
                                 Vorheriger Artikel
                             </a>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="one half align-right">
                         {% if (model.next) %}
-                            <a href="{{ app.baseUrl }}/article/{{ model.next.id }}" class="small button">
+                            <a href="{{ app.baseUrl }}/article/{{ model.next.id }}" class="button">
                                 Nächster Artikel
                                 <i class="icon-double-angle-right"></i>
                             </a>
