@@ -47,7 +47,7 @@ class Article {
 
     /**
      * @var string
-     * @Column(type="string")
+     * @Column(type="datetime")
      */
     protected $date;
 

@@ -9,3 +9,7 @@ p, li {
 pre {
     margin-bottom: 10px;
 }
+
+article h2 a {
+    text-decoration: none;
+}

@@ -3,20 +3,21 @@
 {% block content %}
 
     {% for post in posts %}
-        <article class="gap-bottom triple">
+        <article class="gap-bottom triple pad-bottom">
             <section>
                 <header>
-                    <h2>{{ post.title }}</h2>
+                    <h2><a href="{{ app.baseUrl }}/article/{{ post.id }}">{{ post.title }}</a></h2>
                 </header>
             </section>
 
             <section>
-                <p>{{ post.excerpt|markdown|raw }}</p>
+
+                <div>{{ post.excerpt|markdown|raw }}</div>
             </section>
 
-            <section>
+            <section class="pad-top">
                 <footer>
-                    <a href="{{ app.baseUrl }}/article/{{ post.id }}" class="small button">
+                    <a href="{{ app.baseUrl }}/article/{{ post.id }}#more" class="small button">
                         Weiterlesen
                         <i class="icon-double-angle-right"></i>
                     </a>

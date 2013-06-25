@@ -27,7 +27,7 @@ class Article extends Controller
         {
             $title   = $request->post('title');
             $content = $request->post('content');
-            $date    = date('Y-m-d H:i:s');
+            $date    = new \DateTime("now");
             $status  = \Kitty\Model\Article::STATUS_PUBLISHED;
             $type    = \Kitty\Model\Article::TYPE_NORMAL;
 
