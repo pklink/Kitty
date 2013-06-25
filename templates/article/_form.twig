@@ -1,36 +1,35 @@
 <form method="post">
-    <div class="row pad-left">
 
-        <div class="one half pad-bottom pad-right">
-            <label for="type">Artikeltyp</label>
-            <select name="type" id="type">
-                <option value="normal" {% if model.type == "normal" %}selected="selected"{% endif %}>Normaler Artikel</option>
-                <option value="short" {% if model.type == "short" %}selected="selected"{% endif %}>Kurzmitteilung</option>
-            </select>
-        </div>
-        <div class="one half pad-bottom">
-            <label for="status">Status</label>
-            <select name="status" id="status">
-                <option value="draft" {% if model.status == "draft" %}selected="selected"{% endif %}>Entwurf</option>
-                <option value="published" {% if model.status == "published" %}selected="selected"{% endif %}>Veröffentlicht</option>
-            </select>
-        </div>
-
-        <div class="one pad-bottom">
-            <label for="name">Titel</label>
-            <input type="text" id="title" name="title" value="{{ model.title }}" placeholder="Ein wirklich richig guter Artikel" required="required" />
-        </div>
-
-        <div class="one pad-bottom">
-            <label for="content">Inhalt</label>
-            <textarea id="content" name="content" placeholder="Content, Content, Conteeeent" required="required">{{ model.content }}</textarea>
-        </div>
-
-        <div class="one padded align-right">
-            <button type="submit" class="success">
-                <i class="icon-ok"></i>
-                Speichern
-            </button>
-        </div>
+    <div class="one half pad-bottom pad-right">
+        <label for="type">Artikeltyp</label>
+        <select name="type" id="type">
+            <option value="normal" {% if model.type == "normal" %}selected="selected"{% endif %}>Normaler Artikel</option>
+            <option value="short" {% if model.type == "short" %}selected="selected"{% endif %}>Kurzmitteilung</option>
+        </select>
     </div>
+    <div class="one half pad-bottom">
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="draft" {% if model.status == "draft" %}selected="selected"{% endif %}>Entwurf</option>
+            <option value="published" {% if model.status == "published" %}selected="selected"{% endif %}>Veröffentlicht</option>
+        </select>
+    </div>
+
+    <div class="one pad-bottom">
+        <label for="name">Titel</label>
+        <input type="text" id="title" name="title" value="{{ model.title }}" placeholder="Ein wirklich richig guter Artikel" required="required" />
+    </div>
+
+    <div class="one pad-bottom">
+        <label for="content">Inhalt</label>
+        <textarea id="content" name="content" placeholder="Content, Content, Conteeeent" required="required">{{ model.content }}</textarea>
+    </div>
+
+    <div class="one padded align-right">
+        <button type="submit" class="success">
+            <i class="icon-ok"></i>
+            Speichern
+        </button>
+    </div>
+
 </form>
