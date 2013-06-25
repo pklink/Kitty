@@ -12,6 +12,8 @@ class Article {
 
     const TYPE_NORMAL = 'normal';
 
+    const TYPE_SHORT = 'short';
+
     const STATUS_PUBLISHED = 'published';
 
 

@@ -1,13 +1,24 @@
 <form method="post">
     <div class="row">
+
         <div class="one padded">
-            <label for="name" for="title">Titel</label>
+            <label for="name">Titel</label>
             <input type="text" id="title" name="title" value="{{ model.title }}" placeholder="Ein wirklich richig guter Artikel" required="required" />
         </div>
+
         <div class="one padded">
-            <label for="content" for="content">Inhalt</label>
+            <label for="type">Artikeltyp</label>
+            <select name="type">
+                <option value="normal" {% if model.type == "normal" %}selected="selected"{% endif %}>Normaler Artikel</option>
+                <option value="short" {% if model.type == "short" %}selected="selected"{% endif %}>Kurzmitteilung</option>
+            </select>
+        </div>
+
+        <div class="one padded">
+            <label for="content">Inhalt</label>
             <textarea id="content" name="content" placeholder="Content, Content, Conteeeent" required="required">{{ model.content }}</textarea>
         </div>
+
         <div class="one padded align-right">
             <button type="submit" class="success">
                 <i class="icon-ok"></i>

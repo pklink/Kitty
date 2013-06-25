@@ -43,18 +43,11 @@ class Article extends Controller
             /* @var App $app */
             $app = $this->app;
 
-            $title   = $request->post('title');
-            $content = $request->post('content');
-            $date    = new \DateTime("now");
-            $status  = \Kitty\Model\Article::STATUS_PUBLISHED;
-            $type    = \Kitty\Model\Article::TYPE_NORMAL;
-
-            $model->setContent($content);
-            $model->setTitle($title);
-            $model->setContent($content);
-            $model->setDate($date);
-            $model->setStatus($status);
-            $model->setType($type);
+            $model->setTitle($request->post('title'));
+            $model->setContent($request->post('content'));
+            $model->setDate(new \DateTime('now'));
+            $model->setStatus(\Kitty\Model\Article::STATUS_PUBLISHED);
+            $model->setType($request->post('type'));
 
             $this->entityManager->persist($model);
             $this->entityManager->flush();
@@ -99,9 +92,12 @@ class Article extends Controller
 
         if ($request->isPost())
         {
+            // set attributes to model
             $model->setTitle($request->post('title'));
             $model->setContent($request->post('content'));
+            $model->setType($request->post('type'));
 
+            // save model
             $this->entityManager->persist($model);
             $this->entityManager->flush();
 
