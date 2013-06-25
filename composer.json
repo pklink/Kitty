@@ -9,6 +9,7 @@
         "slim/slim": "2.*",
         "doctrine/orm": "2.*",
         "slimcontroller/slimcontroller": "dev-master",
+        "cpliakas/doctrine-password": "1.*",
         "twig/twig": "1.*"
     }
 }

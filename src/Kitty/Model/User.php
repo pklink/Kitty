@@ -43,7 +43,7 @@ class User
 
     /**
      * @var string
-     * @Column(type="string")
+     * @Column(type="password", nullable=false)
      */
     protected $password;
 

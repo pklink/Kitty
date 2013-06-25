@@ -3,6 +3,7 @@
 namespace Kitty;
 
 use Doctrine\ORM\Tools\Setup;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * Class EntityManager
@@ -36,6 +37,9 @@ class EntityManager {
 
         // obtaining the entity manager
         self::$instance = \Doctrine\ORM\EntityManager::create($conn, $config);
+
+        // add password-type
+        Type::addType('password', 'Cpliakas\Password\Doctrine\PasswordType');
     }
 
 

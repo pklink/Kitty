@@ -29,10 +29,9 @@ class Site extends Controller
 
             $user = $this->enitityManager->getRepository('Kitty\Model\User')->findOneBy([
                 'username' => $username,
-                'password' => $password
             ]);
 
-            if ($user instanceof User) {
+            if ($user instanceof User && $user->getPassword()->match($password)) {
                 $app->getIdentity()->login($user->getName());
                 $app->redirect($app->getBaseUrl() . '/admin');
             }

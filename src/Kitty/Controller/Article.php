@@ -5,6 +5,7 @@ namespace Kitty\Controller;
 
 use Kitty\Controller;
 use Kitty\EntityManager;
+use Kitty\Model\User;
 use Kitty\Twig;
 
 /**
@@ -59,6 +60,12 @@ class Article extends Controller
         $this->render('article/index', [
             'posts' => $posts->getResult()
         ]);
+
+        $user = new User();
+        $user->setUsername('peter');
+        $user->setPassword('password');
+        $this->enitityManager->persist($user);
+        $this->enitityManager->flush();
     }
 
 
