@@ -29,7 +29,6 @@ $app->addRoutes(array(
 $app->add(new \Kitty\Middleware\Authentication([
     'loginUrl'  => $app->getBaseUrl() . '/login',
     'secured'   => [
-        $app->getBaseUrl() . '/admin',
         $app->getBaseUrl() . '/article/admin',
         $app->getBaseUrl() . '/article/create',
         $app->getBaseUrl() . '/article/delete/',
