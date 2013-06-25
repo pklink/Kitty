@@ -27,12 +27,13 @@ class Site extends Controller
             $username = $request->post('username');
             $password = $request->post('password');
 
+            /* @var User $user */
             $user = $this->entityManager->getRepository('Kitty\Model\User')->findOneBy([
                 'username' => $username,
             ]);
 
             if ($user instanceof User && $user->getPassword()->match($password)) {
-                $app->getIdentity()->login($user->getName());
+                $app->getIdentity()->login($user);
                 $app->redirect($app->getBaseUrl());
             }
         }

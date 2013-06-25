@@ -4,6 +4,8 @@
 namespace Kitty;
 
 
+use Kitty\Model\User;
+
 class Identity
 {
 
@@ -63,12 +65,22 @@ class Identity
 
 
     /**
-     * @param $name
+     * @param User $user
      */
-    public function login($name)
+    public function login(User $user)
     {
-        $this->setName($name);
         $this->setToSesstion('isGuest', false);
+        $this->setToSesstion('user', $user);
+    }
+
+
+    /**
+     * @param string $name
+     */
+    public function get($name)
+    {
+        $methodName = 'get' . ucfirst($name);
+        return $this->getFromSession('user')->$methodName();
     }
 
 
@@ -78,24 +90,6 @@ class Identity
     public function logout()
     {
         $this->initSession();
-    }
-
-
-    /**
-     * @param String $name
-     */
-    public function setName($name)
-    {
-        $this->setToSesstion('name', $name);
-    }
-
-
-    /**
-     * @return String
-     */
-    public function getName()
-    {
-        return $this->getFromSession('name');
     }
 
 }
