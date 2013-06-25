@@ -23,10 +23,18 @@ class Article extends Controller
      */
     public function adminAction()
     {
+        // get all articles
         $articles = $this->entityManager->getRepository('Kitty\Model\Article')->findAll();
+
+        // set head-title
+        $this->setHeadArgument('title', 'Artikel erstellen');
+
+        // render view
         $this->render('article/admin', [
             'articles' => $articles
         ]);
+
+
     }
 
 
@@ -56,6 +64,10 @@ class Article extends Controller
             $this->redirect($app->getBaseUrl() . '/article/admin');
         }
 
+        // set head-title
+        $this->setHeadArgument('title', 'Artikel erstellen');
+
+        // render view
         $this->render('article/create', [
             'model' => $model
         ]);
@@ -90,6 +102,7 @@ class Article extends Controller
         $request = $app->request();
         $model   = $this->getModel($id);
 
+        // form was submitted
         if ($request->isPost())
         {
             // set attributes to model
@@ -106,6 +119,10 @@ class Article extends Controller
             $app->redirect($app->getBaseUrl() . '/article/admin');
         }
 
+        // set head-title
+        $this->setHeadArgument('title', 'Artikel bearbeiten');
+
+        // render view
         $this->render('article/edit', [
             'model' => $model
         ]);
@@ -140,16 +157,13 @@ class Article extends Controller
             'type'   => \Kitty\Model\Article::TYPE_NORMAL
         ], ['id' => 'DESC']);
 
+        // set head-title
+        $this->setHeadArgument('title', 'Artikelübersicht');
+
         // render index
         $this->render('article/index', [
             'posts' => $models
         ]);
-
-        $user = new User();
-        $user->setUsername('peter');
-        $user->setPassword('password');
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
     }
 
 
@@ -157,10 +171,15 @@ class Article extends Controller
      * @param int $id
      */
     public function viewAction($id) {
+        // get article
         $model = $this->getModel($id);
 
+        // set head-title
+        $this->setHeadArgument('title', $model->getTitle());
+
+        // render view
         $this->render('article/view', [
-            'post' => $model
+            'model' => $model
         ]);
     }
 

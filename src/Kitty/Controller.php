@@ -23,6 +23,12 @@ abstract class Controller extends SlimController {
 
 
     /**
+     * @var array
+     */
+    private $headArguments = [];
+
+
+    /**
      * @param Slim $app
      */
     public function __construct(Slim &$app)
@@ -51,6 +57,16 @@ abstract class Controller extends SlimController {
 
 
     /**
+     * @param string $name
+     * @param mixed $value
+     */
+    protected function setHeadArgument($name, $value)
+    {
+        $this->headArguments[$name] = $value;
+    }
+
+
+    /**
      * @param string $template
      * @param array $args
      */
@@ -69,6 +85,9 @@ abstract class Controller extends SlimController {
 
         // add options
         $args['options'] = $this->getOptions();
+
+        // add header arguments
+        $args['headArguments'] = $this->headArguments;
 
         parent::render($template, $args);
     }

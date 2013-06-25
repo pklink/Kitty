@@ -37,6 +37,10 @@ class Site extends Controller
             }
         }
 
+        // set head-title
+        $this->setHeadArgument('title', 'Login');
+
+        // render view
         $this->render('site/login');
     }
 

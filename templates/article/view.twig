@@ -1,11 +1,12 @@
 {% extends "index.twig" %}
 
+
 {% block content %}
 
     <article>
         <section>
             <header>
-                <h2>{{ post.title }}</h2>
+                <h2>{{ model.title }}</h2>
                 <p>
                     <a class="small yellow button"><i class="icon-tag"></i> zeug</a>
                     <a class="small orange button"><i class="icon-tag"></i> anderes zeug</a>
@@ -15,12 +16,12 @@
                     <a class="small turquoise button"><i class="icon-tag"></i> github</a>
                     <a class="small green button"><i class="icon-tag"></i> open source</a>
                 </p>
-                <p class="small">veröffentlicht am {{ post.date|date("d.m.Y") }}</p>
+                <p class="small">veröffentlicht am {{ model.date|date("d.m.Y") }}</p>
             </header>
         </section>
 
         <section>
-            <p>{{ post.content|markdown|raw }}</p>
+            <p>{{ model.content|markdown|raw }}</p>
         </section>
 
         <section>

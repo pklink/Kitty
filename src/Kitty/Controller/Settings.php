@@ -48,6 +48,10 @@ class Settings extends Controller
             $app->redirect($app->getBaseUrl() . '/settings');
         }
 
+        // set head-title
+        $this->setHeadArgument('title', 'Allgemeine Einstelungen');
+
+        // render view
         $this->render('settings/general', [
             'name' => $name->getValue()
         ]);
