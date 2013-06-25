@@ -3,6 +3,7 @@
 
 namespace Kitty\Controller;
 
+use Kitty\App;
 use Kitty\Controller;
 use Kitty\EntityManager;
 use Kitty\Model\User;
@@ -38,6 +39,9 @@ class Article extends Controller
 
         if ($request->isPost())
         {
+            /* @var App $app */
+            $app = $this->app;
+
             $title   = $request->post('title');
             $content = $request->post('content');
             $date    = new \DateTime("now");
@@ -54,6 +58,9 @@ class Article extends Controller
 
             $this->entityManager->persist($article);
             $this->entityManager->flush();
+
+            $app->flash('success', 'Artikel wurde erstellt.');
+            $this->redirect($app->getBaseUrl() . '/article/admin');
         }
 
         $this->render('article/create');

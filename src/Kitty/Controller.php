@@ -45,6 +45,9 @@ abstract class Controller extends SlimController {
         ];
         $args['identity'] = $app->getIdentity();
 
+        // added flash messages
+        $args['flash'] = $_SESSION['slim.flash'];
+
         parent::render($template, $args);
     }
 

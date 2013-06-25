@@ -4,6 +4,11 @@
 
     <h2>Übersicht</h2>
 
+    {% if flash.success %}
+        <p class="success message">{{ flash.success }}</p>
+    {% endif %}
+
+
     <table>
         <thead>
             <tr>
