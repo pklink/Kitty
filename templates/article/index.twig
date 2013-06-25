@@ -7,6 +7,7 @@
             <section>
                 <header>
                     <h2><a href="{{ app.baseUrl }}/article/{{ post.id }}">{{ post.title }}</a></h2>
+                    <p class="meta small">veröffentlich von {{ post.author.name|default("Unbekannt") }} am {{ post.date|date("d. F Y") }}</p>
                 </header>
             </section>
 

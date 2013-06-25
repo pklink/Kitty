@@ -18,3 +18,15 @@ td.options a {
     font-size: 1.3em;
     margin-right: 10px;
 }
+
+article header h2 {
+    margin-bottom: 5px;
+}
+
+article header .meta {
+    opacity: 0.5;
+}
+
+article header .tagline {
+    opacity: 0.8;
+}

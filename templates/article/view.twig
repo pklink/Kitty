@@ -6,7 +6,8 @@
         <section>
             <header>
                 <h2>{{ model.title }}</h2>
-                <p>
+                <p class="meta small">veröffentlich von {{ post.author.name|default("Unbekannt") }} am {{ post.date|date("d. F Y") }}</p>
+                <p class="tagline">
                     <a class="small yellow button"><i class="icon-tag"></i> zeug</a>
                     <a class="small orange button"><i class="icon-tag"></i> anderes zeug</a>
                     <a class="small pink button"><i class="icon-tag"></i> development</a>
@@ -15,11 +16,10 @@
                     <a class="small turquoise button"><i class="icon-tag"></i> github</a>
                     <a class="small green button"><i class="icon-tag"></i> open source</a>
                 </p>
-                <p class="small">veröffentlicht am {{ model.date|date("d.m.Y") }}</p>
             </header>
         </section>
 
-        <section>
+        <section class="pad-top">
             <p>{{ model.content|markdown|raw }}</p>
         </section>
 
