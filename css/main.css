@@ -10,12 +10,11 @@ pre {
     margin-bottom: 10px;
 }
 
-article h2 a {
+a, a:hover {
     text-decoration: none;
 }
 
 td.options a {
-    text-decoration: none;
     font-size: 1.3em;
     margin-right: 10px;
 }

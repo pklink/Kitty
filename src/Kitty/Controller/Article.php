@@ -36,6 +36,7 @@ class Article extends Controller
     public function createAction()
     {
         $request = $this->app->request();
+        $model   = new \Kitty\Model\Article();
 
         if ($request->isPost())
         {
@@ -48,22 +49,69 @@ class Article extends Controller
             $status  = \Kitty\Model\Article::STATUS_PUBLISHED;
             $type    = \Kitty\Model\Article::TYPE_NORMAL;
 
-            $article = new \Kitty\Model\Article();
-            $article->setContent($content);
-            $article->setTitle($title);
-            $article->setContent($content);
-            $article->setDate($date);
-            $article->setStatus($status);
-            $article->setType($type);
+            $model->setContent($content);
+            $model->setTitle($title);
+            $model->setContent($content);
+            $model->setDate($date);
+            $model->setStatus($status);
+            $model->setType($type);
 
-            $this->entityManager->persist($article);
+            $this->entityManager->persist($model);
             $this->entityManager->flush();
 
             $app->flash('success', 'Artikel wurde erstellt.');
             $this->redirect($app->getBaseUrl() . '/article/admin');
         }
 
-        $this->render('article/create');
+        $this->render('article/create', [
+            'model' => $model
+        ]);
+    }
+
+
+    /**
+     * @param int $id
+     * @return \Kitty\Model\Article
+     */
+    protected function getModel($id)
+    {
+        // get post
+        $model = $this->entityManager->find('Kitty\Model\Article', $id);
+
+        if ($model == null)
+        {
+            $this->app->notFound();
+        }
+
+        return $model;
+    }
+
+
+    /**
+     * @param int $id
+     */
+    public function editAction($id)
+    {
+        /* @var App $app */
+        $app     = $this->app;
+        $request = $app->request();
+        $model   = $this->getModel($id);
+
+        if ($request->isPost())
+        {
+            $model->setTitle($request->post('title'));
+            $model->setContent($request->post('content'));
+
+            $this->entityManager->persist($model);
+            $this->entityManager->flush();
+
+            $app->flash('success', 'Artikel wurde aktualisiert.');
+            $app->redirect($app->getBaseUrl() . '/article/admin');
+        }
+
+        $this->render('article/edit', [
+            'model' => $model
+        ]);
     }
 
 
@@ -73,14 +121,9 @@ class Article extends Controller
     public function deleteAction($id)
     {
         // get post
-        $post = $this->entityManager->find('Kitty\Model\Article', $id);
+        $model = $this->getModel($id);
 
-        if ($post == null)
-        {
-            $this->app->notFound();
-        }
-
-        $this->entityManager->remove($post);
+        $this->entityManager->remove($model);
         $this->entityManager->flush();
 
         /* @var App $app; */
@@ -95,14 +138,14 @@ class Article extends Controller
      */
     public function indexAction() {
         // get posts
-        $posts = $this->entityManager->getRepository('Kitty\Model\Article')->findBy([
+        $models = $this->entityManager->getRepository('Kitty\Model\Article')->findBy([
             'status' => \Kitty\Model\Article::STATUS_PUBLISHED,
             'type'   => \Kitty\Model\Article::TYPE_NORMAL
         ], ['id' => 'DESC']);
 
         // render index
         $this->render('article/index', [
-            'posts' => $posts
+            'posts' => $models
         ]);
 
         $user = new User();
@@ -117,16 +160,10 @@ class Article extends Controller
      * @param int $id
      */
     public function viewAction($id) {
-        // get post
-        $post = $this->entityManager->find('Kitty\Model\Article', $id);
-
-        if ($post == null)
-        {
-            $this->app->notFound();
-        }
+        $model = $this->getModel($id);
 
         $this->render('article/view', [
-            'post' => $post
+            'post' => $model
         ]);
     }
 

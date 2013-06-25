@@ -16,7 +16,8 @@ $app->add(new \Kitty\Middleware\Authentication([
         $app->getBaseUrl() . '/admin',
         $app->getBaseUrl() . '/article/admin',
         $app->getBaseUrl() . '/article/create',
-        $app->getBaseUrl() . '/article/delete',
+        $app->getBaseUrl() . '/article/delete/',
+        $app->getBaseUrl() . '/article/edit/',
     ]
 ]));
 
@@ -25,6 +26,7 @@ $app->addRoutes(array(
     '/'                     => 'Article:index',
     '/article/create'       => 'Article:create',
     '/article/admin'        => 'Article:admin',
+    '/article/edit/:id'     => 'Article:edit',
     '/article/delete/:id'   => 'Article:delete',
     '/article/:id'          => 'Article:view',
     '/login'                => 'Site:login',

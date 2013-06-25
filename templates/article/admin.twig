@@ -22,9 +22,9 @@
             {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
-                    <td>{{ article.title }}</td>
+                    <td><a href="{{ app.baseUrl }}/article/{{ article.id }}"  class="tooltip" title="Artikel anzeigen">{{ article.title }}</td>
                     <td class="options align-right">
-                        <a href="#" class="tooltip" title="Bearbeiten"><i class="icon-pencil"></i></a>
+                        <a href="{{ app.baseUrl }}/article/edit/{{ article.id }}"  class="tooltip" title="Bearbeiten"><i class="icon-pencil"></i></a>
                         <a href="#delete-{{ article.id }}" class="modal tooltip" title="Löschen"><i class="icon-remove"></i></a>
                         <div id="delete-{{ article.id }}" class="mfp-hide">
                             <p>Möchtest du den Artikel <strong>{{ article.title }}</strong> wirklich löschen?</p>
