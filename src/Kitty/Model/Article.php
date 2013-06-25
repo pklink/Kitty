@@ -10,6 +10,11 @@ namespace Kitty\Model;
  */
 class Article {
 
+    const TYPE_NORMAL = 'normal';
+
+    const STATUS_PUBLISHED = 'published';
+
+
     /**
      * @var integer
      * @Id @Column(type="integer") @GeneratedValue

@@ -28,8 +28,8 @@ class Article extends Controller
             $title   = $request->post('title');
             $content = $request->post('content');
             $date    = date('Y-m-d H:i:s');
-            $status  = 'published';
-            $type    = 'normal';
+            $status  = \Kitty\Model\Article::STATUS_PUBLISHED;
+            $type    = \Kitty\Model\Article::TYPE_NORMAL;
 
             $article = new \Kitty\Model\Article();
             $article->setContent($content);
@@ -52,13 +52,14 @@ class Article extends Controller
      */
     public function indexAction() {
         // get posts
-        $posts = $this->entityManager->createQuery('SELECT p FROM Kitty\Model\Post p WHERE p.type = ?1 AND p.status = ?2 ORDER BY p.id DESC');
-        $posts->setParameter(1, 'post');
-        $posts->setParameter(2, 'publish');
+        $posts = $this->entityManager->getRepository('Kitty\Model\Article')->findBy([
+            'status' => \Kitty\Model\Article::STATUS_PUBLISHED,
+            'type'   => \Kitty\Model\Article::TYPE_NORMAL
+        ], ['id' => 'DESC']);
 
         // render index
         $this->render('article/index', [
-            'posts' => $posts->getResult()
+            'posts' => $posts
         ]);
 
         $user = new User();
@@ -74,7 +75,12 @@ class Article extends Controller
      */
     public function viewAction($id) {
         // get post
-        $post = $this->entityManager->find('Kitty\Model\Post', $id);
+        $post = $this->entityManager->find('Kitty\Model\Article', $id);
+
+        if ($post == null)
+        {
+            $this->app->notFound();
+        }
 
         $this->render('article/view', [
             'post' => $post
