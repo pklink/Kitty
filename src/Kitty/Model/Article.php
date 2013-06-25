@@ -1,6 +1,9 @@
 <?php
 
 namespace Kitty\Model;
+use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\Query;
+use Kitty\EntityManager;
 
 /**
  * Class Post
@@ -190,6 +193,41 @@ class Article {
         }
 
         return substr($content, 0, $end);
+    }
+
+
+    /**
+     * @return Article|null
+     */
+    public function getNext()
+    {
+        $sql   = 'SELECT a FROM Kitty\Model\Article a WHERE a.id > ?1';
+        $query = EntityManager::instance()->createQuery($sql);
+        $query->setParameter(1, $this->getId());
+        $query->setMaxResults(1);
+
+        try {
+            return $query->getSingleResult();
+        } catch (NoResultException $e) {
+            return null;
+        }
+    }
+
+    /**
+     * @return Article|null
+     */
+    public function getPrevious()
+    {
+        $sql   = 'SELECT a FROM Kitty\Model\Article a WHERE a.id < ?1';
+        $query = EntityManager::instance()->createQuery($sql);
+        $query->setParameter(1, $this->getId());
+        $query->setMaxResults(1);
+
+        try {
+            return $query->getSingleResult();
+        } catch (NoResultException $e) {
+            return null;
+        }
     }
 
 }

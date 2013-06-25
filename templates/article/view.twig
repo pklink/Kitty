@@ -27,16 +27,20 @@
             <footer class="gap-top double">
                 <div class="row">
                     <div class="one half">
-                        <a href="#" class="small button">
-                            <i class="icon-double-angle-left"></i>
-                            Vorheriger Artikel
-                        </a>
+                        {% if (model.previous) %}
+                            <a href="{{ app.baseUrl }}/article/{{ model.previous.id }}" class="small button">
+                                <i class="icon-double-angle-left"></i>
+                                Vorheriger Artikel
+                            </a>
+                        {% endif %}
                     </div>
                     <div class="one half align-right">
-                        <a href="#" class="small button">
-                            Nächster Artikel
-                            <i class="icon-double-angle-right"></i>
-                        </a>
+                        {% if (model.next) %}
+                            <a href="{{ app.baseUrl }}/article/{{ model.next.id }}" class="small button">
+                                Nächster Artikel
+                                <i class="icon-double-angle-right"></i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </footer>
