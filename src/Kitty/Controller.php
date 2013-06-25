@@ -18,7 +18,7 @@ abstract class Controller extends SlimController {
     /**
      * @var EntityManager
      */
-    protected $enitityManager;
+    protected $entityManager;
 
 
     /**
@@ -26,7 +26,7 @@ abstract class Controller extends SlimController {
      */
     public function __construct(Slim &$app)
     {
-        $this->enitityManager = EntityManager::instance();
+        $this->entityManager = EntityManager::instance();
         parent::__construct($app);
     }
 

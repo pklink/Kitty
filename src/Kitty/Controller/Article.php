@@ -39,8 +39,8 @@ class Article extends Controller
             $article->setStatus($status);
             $article->setType($type);
 
-            $this->enitityManager->persist($article);
-            $this->enitityManager->flush();
+            $this->entityManager->persist($article);
+            $this->entityManager->flush();
         }
 
         $this->render('article/create');
@@ -52,7 +52,7 @@ class Article extends Controller
      */
     public function indexAction() {
         // get posts
-        $posts = $this->enitityManager->createQuery('SELECT p FROM Kitty\Model\Post p WHERE p.type = ?1 AND p.status = ?2 ORDER BY p.id DESC');
+        $posts = $this->entityManager->createQuery('SELECT p FROM Kitty\Model\Post p WHERE p.type = ?1 AND p.status = ?2 ORDER BY p.id DESC');
         $posts->setParameter(1, 'post');
         $posts->setParameter(2, 'publish');
 
@@ -64,8 +64,8 @@ class Article extends Controller
         $user = new User();
         $user->setUsername('peter');
         $user->setPassword('password');
-        $this->enitityManager->persist($user);
-        $this->enitityManager->flush();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 
 
@@ -74,7 +74,7 @@ class Article extends Controller
      */
     public function viewAction($id) {
         // get post
-        $post = $this->enitityManager->find('Kitty\Model\Post', $id);
+        $post = $this->entityManager->find('Kitty\Model\Post', $id);
 
         $this->render('article/view', [
             'post' => $post

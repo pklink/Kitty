@@ -27,7 +27,7 @@ class Site extends Controller
             $username = $request->post('username');
             $password = $request->post('password');
 
-            $user = $this->enitityManager->getRepository('Kitty\Model\User')->findOneBy([
+            $user = $this->entityManager->getRepository('Kitty\Model\User')->findOneBy([
                 'username' => $username,
             ]);
 
