@@ -9,7 +9,23 @@ $app = new \Kitty\App([
     'controller.class_prefix'    => '\\Kitty\\Controller',
 ]);
 
+// add routes
+$app->addRoutes(array(
+    '/'                     => 'Article:index',
+    '/article/create'       => 'Article:create',
+    '/article/admin'        => 'Article:admin',
+    '/article/edit/:id'     => 'Article:edit',
+    '/article/delete/:id'   => 'Article:delete',
+    '/article/:id'          => 'Article:view',
+    '/settings'             => 'Settings:general',
+    '/login'                => 'Site:login',
+    '/logout'               => 'Site:logout',
+    '/admin'                => 'Admin:index',
+    '/admin/dashboard'      => 'Admin:dashboard',
+));
 
+
+// add middleware for authentication
 $app->add(new \Kitty\Middleware\Authentication([
     'loginUrl'  => $app->getBaseUrl() . '/login',
     'secured'   => [
@@ -18,22 +34,9 @@ $app->add(new \Kitty\Middleware\Authentication([
         $app->getBaseUrl() . '/article/create',
         $app->getBaseUrl() . '/article/delete/',
         $app->getBaseUrl() . '/article/edit/',
+        $app->getBaseUrl() . '/settings',
     ]
 ]));
-
-
-$app->addRoutes(array(
-    '/'                     => 'Article:index',
-    '/article/create'       => 'Article:create',
-    '/article/admin'        => 'Article:admin',
-    '/article/edit/:id'     => 'Article:edit',
-    '/article/delete/:id'   => 'Article:delete',
-    '/article/:id'          => 'Article:view',
-    '/login'                => 'Site:login',
-    '/logout'               => 'Site:logout',
-    '/admin'                => 'Admin:index',
-    '/admin/dashboard'      => 'Admin:dashboard',
-));
 
 
 // 404

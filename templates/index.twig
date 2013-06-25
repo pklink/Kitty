@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>{{ options.name }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
@@ -59,14 +59,13 @@
 
 <header class="white band padded border-bottom double gap-bottom">
     <div class="container">
-        <h1>GroundworkCSS</h1>
+        <h1>{{ options.name }}</h1>
         <nav class="inline nav">
             <ul class="row">
                 <li><a href="{{ app.baseUrl }}"><i class="icon-home"></i></a></li>
                 {% if identity.isGuest %}
                     <li><a href="{{ app.baseUrl }}/login">Login</a></li>
                 {% else %}
-                    <li><a href="{{ app.baseUrl }}/admin">Admin</a></li>
                     <li class="menu">
                         <a>Artikel</a>
                         <ul>
@@ -74,6 +73,11 @@
                             <li><a href="{{ app.baseUrl }}/article/create">Erstellen</a></li>
                         </ul>
                     </li>
+                    <li class="menu">
+                        <a>Einstellungen</a>
+                        <ul>
+                            <li><a href="{{ app.baseUrl }}/settings">Allgemein</a></li>
+                        </ul>
                     <li><a href="{{ app.baseUrl }}/logout">Logout</a></li>
                 {% endif %}
 

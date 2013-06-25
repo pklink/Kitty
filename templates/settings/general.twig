@@ -1,0 +1,25 @@
+{% extends "index.twig" %}
+
+{% block content %}
+
+    <h2>Allgemeine Einstellungen</h2>
+
+    <form method="post">
+        <div class="row pad-left">
+
+            <div class="one pad-bottom">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{ name }}" placeholder="Blog XYZ" required="required" />
+            </div>
+
+            <div class="one padded align-right">
+                <button type="submit" class="success">
+                    <i class="icon-ok"></i>
+                    Speichern
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

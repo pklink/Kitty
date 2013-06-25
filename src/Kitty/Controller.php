@@ -4,6 +4,7 @@
 namespace Kitty;
 
 
+use Kitty\Model\Option;
 use Slim\Slim;
 use SlimController\SlimController;
 
@@ -32,6 +33,24 @@ abstract class Controller extends SlimController {
 
 
     /**
+     * @return array
+     */
+    private function getOptions()
+    {
+        $options    = $this->entityManager->getRepository('Kitty\Model\Option')->findAll();
+        $optionsArr = [];
+
+        foreach ($options as $option)
+        {
+            /* @var Option $option */
+            $optionsArr[$option->getName()] = $option->getValue();
+        }
+
+        return $optionsArr;
+    }
+
+
+    /**
      * @param string $template
      * @param array $args
      */
@@ -45,8 +64,11 @@ abstract class Controller extends SlimController {
         ];
         $args['identity'] = $app->getIdentity();
 
-        // added flash messages
+        // add flash messages
         $args['flash'] = $_SESSION['slim.flash'];
+
+        // add options
+        $args['options'] = $this->getOptions();
 
         parent::render($template, $args);
     }
