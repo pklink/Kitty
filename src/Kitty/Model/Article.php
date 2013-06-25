@@ -26,6 +26,13 @@ class Article {
     protected $id;
 
     /**
+     * @var User
+     * @ManyToOne(targetEntity="Kitty\Model\User")
+     * @JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    protected $author;
+
+    /**
      * @var string
      * @Column(type="string")
      */
@@ -154,6 +161,21 @@ class Article {
         return $this->date;
     }
 
+    /**
+     * @param \Kitty\Model\User $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return \Kitty\Model\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
     /**
      * @return string

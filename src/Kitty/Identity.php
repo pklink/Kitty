@@ -75,7 +75,17 @@ class Identity
 
 
     /**
+     * @return User
+     */
+    public function getModel()
+    {
+        return EntityManager::instance()->find('Kitty\Model\User', $this->get('id'));
+    }
+
+
+    /**
      * @param string $name
+     * @return string
      */
     public function get($name)
     {

@@ -56,6 +56,7 @@ class Article extends Controller
             $model->setDate(new \DateTime('now'));
             $model->setStatus($request->post('status'));
             $model->setType($request->post('type'));
+            $model->setAuthor($app->getIdentity()->getModel());
 
             $this->entityManager->persist($model);
             $this->entityManager->flush();
@@ -110,6 +111,7 @@ class Article extends Controller
             $model->setContent($request->post('content'));
             $model->setType($request->post('type'));
             $model->setStatus($request->post('status'));
+            $model->setAuthor($app->getIdentity()->getModel());
 
             // save model
             $this->entityManager->persist($model);
