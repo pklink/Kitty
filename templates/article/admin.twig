@@ -1,0 +1,29 @@
+{% extends "index.twig" %}
+
+{% block content %}
+
+    <h2>Übersicht</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%">ID</th>
+                <th>Titel</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td class="options align-right">
+                        <a href="#" class="tooltip" title="Bearbeiten"><i class="icon-pencil"></i></a>
+                        <a href="#" class="tooltip" title="Löschen"><i class="icon-remove"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

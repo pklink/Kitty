@@ -16,6 +16,19 @@ use Kitty\Twig;
 class Article extends Controller
 {
 
+
+    /**
+     * @return void
+     */
+    public function adminAction()
+    {
+        $articles = $this->entityManager->getRepository('Kitty\Model\Article')->findAll();
+        $this->render('article/admin', [
+            'articles' => $articles
+        ]);
+    }
+
+
     /**
      * @return void
      */
