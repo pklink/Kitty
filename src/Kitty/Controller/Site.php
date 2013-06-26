@@ -36,6 +36,8 @@ class Site extends Controller
                 $app->getIdentity()->login($user);
                 $app->redirect($app->getBaseUrl());
             }
+
+            $app->flash('error', 'Logindaten ungültig.');
         }
 
         // set head-title

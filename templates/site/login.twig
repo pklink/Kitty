@@ -6,6 +6,10 @@
 
     <form method="post" class="two thirds">
 
+        {% if flash.error %}
+            <p class="error message">{{ flash.error }}</p>
+        {% endif %}
+
         <div class="one pad-bottom">
             <label for="username">Benutzername</label>
             <input type="text" name="username" id="username" required="required" />
