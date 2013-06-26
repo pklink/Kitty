@@ -34,7 +34,7 @@ class Site extends Controller
 
             if ($user instanceof User && $user->getPassword()->match($password)) {
                 $app->getIdentity()->login($user);
-                $app->redirect($app->getBaseUrl());
+                $app->redirect($app->getBaseUrl() . '/');
             }
 
             $app->flash('error', 'Logindaten ungültig.');
@@ -57,7 +57,7 @@ class Site extends Controller
         $app = $this->app;
 
         $app->getIdentity()->logout();
-        $app->redirect($app->getBaseUrl());
+        $app->redirect($app->getBaseUrl() . '/');
     }
 
 }
