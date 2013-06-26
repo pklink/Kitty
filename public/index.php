@@ -1,12 +1,12 @@
 <?php
 
-require_once "vendor/autoload.php";
+require_once "../vendor/autoload.php";
 
 
 $app = new \Kitty\App([
-    'debug'   => true,
-    'baseUrl' => '/mdwp',
-    'controller.class_prefix'    => '\\Kitty\\Controller',
+    'debug'                   => true,
+    'baseUrl'                 => '', // without closing slash
+    'controller.class_prefix' => '\\Kitty\\Controller',
 ]);
 
 // add routes
