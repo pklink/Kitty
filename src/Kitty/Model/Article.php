@@ -1,6 +1,7 @@
 <?php
 
 namespace Kitty\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Kitty\EntityManager;
@@ -64,6 +65,26 @@ class Article {
      * @Column(type="datetime")
      */
     protected $date;
+
+
+    /**
+     * @var Tag[]
+     * @ManyToMany(targetEntity="Kitty\Model\Tag")
+     * @JoinTable(name="articles_tags",
+     *      joinColumns={@JoinColumn(name="article_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="tag_id", referencedColumnName="id")}
+     * )
+     */
+    protected $tags;
+
+
+    /**
+     * @return Article
+     */
+    function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
 
     /**
@@ -228,6 +249,22 @@ class Article {
         } catch (NoResultException $e) {
             return null;
         }
+    }
+
+    /**
+     * @param \Kitty\Model\Tag[] $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return \Doctrine\ORM\PersistentCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
 }

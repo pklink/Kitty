@@ -3,7 +3,7 @@
 namespace Kitty\Model;
 
 /**
- * Class Post
+ * Class Option
  *
  * @package Kitty\Model
  * @Entity @Table(name="options")

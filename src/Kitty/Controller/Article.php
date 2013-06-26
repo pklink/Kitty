@@ -175,7 +175,7 @@ class Article extends Controller
     public function viewAction($id) {
         // get article
         $model = $this->getModel($id);
-        $model->getNext();
+
         // set head-title
         $this->setHeadArgument('title', $model->getTitle());
 
